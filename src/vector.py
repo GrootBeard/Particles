@@ -26,7 +26,7 @@ class Vector2:
         return Vector2(self.x / scalar, self.y / scalar)
 
     def __add__(self, other):
-        self.add(other)
+        return self.add(other)
 
     def __sub__(self, other):
         return self.sub(other)
