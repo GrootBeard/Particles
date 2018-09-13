@@ -1,6 +1,3 @@
-import numpy as np
-from particleManager import ParticleManager
-
 from vector import Vector2 as Vec2
 
 
@@ -10,7 +7,7 @@ class Entity(object):
         self.__id = -1
 
     def set_id(self, id):
-        if self.__id >= 0 and id >= 0:
+        if self.__id < 0 <= id:
             self.__id = id
 
     def get_id(self):
@@ -29,6 +26,10 @@ class Particle(Entity):
 
     def apply_force(self, force):
         self.forces += force
+
+    def integrate(self, dt):
+        self.velocity += self.get_total_force() * dt
+        self.position += self.velocity * dt
 
     def get_total_force(self):
         return self.forces + self.static_forces

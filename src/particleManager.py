@@ -1,6 +1,3 @@
-# from particles import Particle
-
-
 class ParticleManager(object):
 
     def __init__(self):
@@ -29,5 +26,3 @@ class ParticleManager(object):
         else:
             for p in self.particles:
                 p.apply_force(force)
-
-

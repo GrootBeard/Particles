@@ -7,6 +7,9 @@ class Vector2:
         self.x = x
         self.y = y
 
+    def norm(self):
+        return self / self.len()
+
     def len(self):
         return np.sqrt(self.len2())
 
@@ -22,7 +25,7 @@ class Vector2:
     def mul(self, scalar):
         return Vector2(self.x * scalar, self.y * scalar)
 
-    def mul(self, scalar):
+    def div(self, scalar):
         return Vector2(self.x / scalar, self.y / scalar)
 
     def __add__(self, other):
@@ -36,6 +39,9 @@ class Vector2:
 
     def __div__(self, scalar):
         return self.div(scalar)
+
+    def __neg__(self):
+        return Vector2(-self.x, -self.y)
 
     def dot(self, other):
         return self.x * other.x + self.y * other.y
