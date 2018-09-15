@@ -1,4 +1,4 @@
-from particleManager import ParticleManager
+from particle_manager import ParticleManager
 from vector import Vector2
 
 
