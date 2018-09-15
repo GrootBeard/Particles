@@ -37,7 +37,7 @@ class Vector2:
     def __mul__(self, scalar):
         return self.mul(scalar)
 
-    def __div__(self, scalar):
+    def __truediv__(self, scalar):
         return self.div(scalar)
 
     def __neg__(self):
