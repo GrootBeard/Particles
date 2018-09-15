@@ -8,7 +8,7 @@ class Vector2:
         self.y = y
 
     def norm(self):
-        return self / self.len()
+        return Vector2(self.x / self.len(), self.y / self.len())
 
     def len(self):
         return np.sqrt(self.len2())

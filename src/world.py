@@ -1,5 +1,5 @@
-from .particle_manager import ParticleManager
-from .vector import Vector2
+from particle_manager import ParticleManager
+from vector import Vector2
 
 
 class World:

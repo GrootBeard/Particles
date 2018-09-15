@@ -1,10 +1,17 @@
-from .world import World
-from .particles import Particle
-from .vector import Vector2
-from .restraints import Spring
+from world import World
+from particles import Particle
+from vector import Vector2
+from restraints import Spring
 import pygame
 
 pygame.init()
+
+displayWidth = 800
+displayHeight = 576
+
+display = pygame.display.set_mode((displayWidth, displayHeight))
+pygame.display.set_caption("Particles")
+
 clock = pygame.time.Clock()
 
 world = World()
@@ -20,14 +27,24 @@ world.add_particle(p2)
 
 tps = 5.0
 
+crashed = False;
 lastTime = 0
-while True:
+while not crashed:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            crashed = True
+
+    display.fill((33, 33, 33))
 
     if lastTime >= tps:
         world.update(1.0 / tps)
-        # world.print_particles()
+        world.print_particles()
 
         s1.update()
 
     clock.tick(tps)
     lastTime += clock.get_time()
+
+    pygame.display.update()
+
+pygame.quit()
