@@ -1,7 +1,7 @@
-from world import World
-from particles import Particle
-from vector import Vector2
-from restraints import Spring
+from .world import World
+from .particles import Particle
+from .vector import Vector2
+from .restraints import Spring
 import pygame
 
 pygame.init()
@@ -25,7 +25,7 @@ while True:
 
     if lastTime >= tps:
         world.update(1.0 / tps)
-        world.print_particles()
+        # world.print_particles()
 
         s1.update()
 

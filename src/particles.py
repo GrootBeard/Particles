@@ -1,4 +1,4 @@
-from vector import Vector2 as Vec2
+from .vector import Vector2 as Vec2
 
 
 class Entity(object):
@@ -6,9 +6,9 @@ class Entity(object):
     def __init__(self):
         self.__id = -1
 
-    def set_id(self, id):
-        if self.__id < 0 <= id:
-            self.__id = id
+    def set_id(self, i):
+        if self.__id < 0 <= i:
+            self.__id = i
 
     def get_id(self):
         return self.__id
@@ -47,5 +47,5 @@ class Particle(Entity):
 class Charge(Particle):
 
     def __init__(self, position, velocity=Vec2(), mass=1, charge=0):
-        super(self.__class__, self).__init__(position, velocity, mass)
         self.charge = charge
+        super(self.__class__, self).__init__(position, velocity, mass)
