@@ -17,5 +17,5 @@ class Spring(Connection):
         print('dist_vec:', dist_vec.__str__())
         stretch = dist_vec.len() - self.rest_length
         print('stretch: ', stretch)
-        self.p1.apply_force(-dist_vec.norm() * stretch * self.spring_constant)
-        self.p2.apply_force(dist_vec.norm() * stretch * self.spring_constant)
+        self.p1.apply_force(-dist_vec.unit() * stretch * self.spring_constant)
+        self.p2.apply_force(dist_vec.unit() * stretch * self.spring_constant)

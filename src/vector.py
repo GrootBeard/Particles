@@ -7,7 +7,7 @@ class Vector2:
         self.x = x
         self.y = y
 
-    def norm(self):
+    def unit(self):
         return Vector2(self.x / self.len(), self.y / self.len())
 
     def len(self):
