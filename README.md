@@ -1,5 +1,5 @@
 # PyParticles
-Python project for simulating classical particles
+Python project for simulating classical particles in real time
 
 **Python version:** Python3.6
 
