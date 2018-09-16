@@ -21,8 +21,8 @@ class World:
         self.particle_mng.subscribe_particle(particle)
         particle.set_static_forces(self.gravity, True)
 
-    def update(self):
-        self.particle_mng.update()
+    def update(self, dt):
+        self.particle_mng.update(dt)
 
     def integrate(self, dt):
         self.particle_mng.integrate(dt)

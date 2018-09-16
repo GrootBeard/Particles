@@ -5,10 +5,11 @@ class ParticleManager(object):
         self.id_counter = 0
         self.available_ids = []
 
-    def update(self):
+    def update(self, dt):
         for p in self.particles:
             p.clear_forces()
-            p.update()
+        for p in self.particles:
+            p.update(dt)
 
     def integrate(self, dt):
         for p in self.particles:

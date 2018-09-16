@@ -6,7 +6,7 @@ class Entity(object):
     def __init__(self):
         self.__id = -1
 
-    def update(self):
+    def update(self, dt):
         pass
 
     def set_id(self, i):
@@ -31,6 +31,10 @@ class Particle(Entity):
     def apply_force(self, force):
         self.forces += force
 
+    def update(self, dt):
+        for c in self.connections:
+            c.update(dt)
+
     def integrate(self, dt):
         # print("total force on {0}: {1}".format(self.get_id(), self.get_total_force()))
         self.velocity += self.get_total_force() * dt / self.mass
@@ -48,7 +52,7 @@ class Particle(Entity):
     def connect(self, other, connection):
         connection.connect(self, other)
         self.connections.append(connection)
-        other.connections.append(connection)
+        # other.connections.append(connection)
 
     def __str__(self):
         return "id: {0}, pos: {1}, vel: {2}".format(self.get_id(), self.position, self.velocity)

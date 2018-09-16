@@ -8,7 +8,10 @@ class Vector2:
         self.y = y
 
     def unit(self):
-        return Vector2(self.x / self.len(), self.y / self.len())
+        length = self.len()
+        if length == 0:
+            return Vector2()
+        return Vector2(self.x / length, self.y / length)
 
     def len(self):
         return np.sqrt(self.len2())

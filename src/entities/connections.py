@@ -1,4 +1,6 @@
 from entities.particles import Entity
+from vector import Vector2
+
 
 class Connection(Entity):
 
@@ -20,15 +22,20 @@ class Connection(Entity):
 
 class Spring(Connection):
 
-    def __init__(self, constant, rest_length, p1, p2):
+    def __init__(self, constant, rest_length, damping=0.0):
         super().__init__()
         self.spring_constant = constant
         self.rest_length = rest_length
-        self.connect(p1, p2)
+        self.damping = damping
+        self.orientation = Vector2()
 
-    def update(self):
-        dist_vec = self.p1.position - self.p2.position
-        stretch = dist_vec.len() - self.rest_length
-        # print("stretch: {0}".format(stretch))
-        self.p1.apply_force(-dist_vec.unit() * stretch * self.spring_constant)
-        self.p2.apply_force(dist_vec.unit() * stretch * self.spring_constant)
+    def update(self, dt):
+        self.orientation = self.p1.position - self.p2.position
+
+        stretch = max(0, self.orientation.len() - self.rest_length)
+        linear_damp = (self.p1.velocity + self.p2.velocity) * self.damping
+
+        self.p1.apply_force(
+            -self.orientation.unit() * stretch * self.spring_constant - (linear_damp if stretch > 0 else Vector2()))
+        self.p2.apply_force(
+             self.orientation.unit() * stretch * self.spring_constant + (linear_damp if stretch > 0 else Vector2()))
