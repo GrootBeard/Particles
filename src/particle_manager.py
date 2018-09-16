@@ -5,6 +5,15 @@ class ParticleManager(object):
         self.id_counter = 0
         self.available_ids = []
 
+    def update(self):
+        for p in self.particles:
+            p.clear_forces()
+            p.update()
+
+    def integrate(self, dt):
+        for p in self.particles:
+            p.integrate(dt)
+
     def subscribe_particle(self, particle):
         if len(self.available_ids) == 0:
             particle.set_id(self.id_counter)
@@ -22,7 +31,7 @@ class ParticleManager(object):
     def apply_global_force(self, force, static=True):
         if static:
             for p in self.particles:
-                p.set_static_forces(force)
+                p.set_static_forces(force, True)
         else:
             for p in self.particles:
                 p.apply_force(force)

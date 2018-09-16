@@ -46,6 +46,9 @@ class Vector2:
     def dot(self, other):
         return self.x * other.x + self.y * other.y
 
+    def get(self):
+        return self.x, self.y
+
     # Rotates the vector anti-clockwise by angle (radians)
     def rot(self, angle):
         return Vector2(self.x * np.cos(angle) - self.y * np.sin(angle), self.x * np.sin(angle) + self.y * np.cos(angle))
