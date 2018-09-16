@@ -16,6 +16,9 @@ class Vector2:
     def len2(self):
         return self.dot(self)
 
+    def arg(self):
+        return np.atan2(self.x, self.y)
+
     def add(self, other):
         return Vector2(self.x + other.x, self.y + other.y)
 
